@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/config/content/pl.js"],"names":["sentenceLength","slightlyTooMany","farTooMany"],"mappings":";;;;;kBAAe;AACdA,iBAAgB;AACfC,mBAAiB,EADF;AAEfC,cAAY;AAFG;AADF,C","file":"pl.js","sourcesContent":["export default {\n\tsentenceLength: {\n\t\tslightlyTooMany: 15,\n\t\tfarTooMany: 20,\n\t},\n};\n"]}

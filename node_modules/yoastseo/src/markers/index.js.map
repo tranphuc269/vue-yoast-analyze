@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/markers/index.js"],"names":["removeMarks"],"mappings":";;;;;;;AAAA;;;;;;QAGCA,W,GAAAA,qB","file":"index.js","sourcesContent":["import removeMarks from \"./removeMarks\";\n\nexport {\n\tremoveMarks,\n};\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/config/index.js"],"names":["presenter"],"mappings":";;;;;;;AAAA;;;;;;QAGCA,S,GAAAA,mB","file":"index.js","sourcesContent":["import presenter from './presenter';\n\nexport {\n\tpresenter,\n};\n"]}

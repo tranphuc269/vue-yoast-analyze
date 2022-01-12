@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/config/content/it.js"],"names":["sentenceLength","recommendedWordCount"],"mappings":";;;;;kBAAe;AACdA,iBAAgB;AACfC,wBAAsB;AADP;AADF,C","file":"it.js","sourcesContent":["export default {\n\tsentenceLength: {\n\t\trecommendedWordCount: 25,\n\t},\n};\n"]}

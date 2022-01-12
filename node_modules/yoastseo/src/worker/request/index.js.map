@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/worker/request/index.js"],"names":["Request"],"mappings":";;;;;;AAAA;;;;;;kBAEeA,iB","file":"index.js","sourcesContent":["import Request from \"./Request\";\n\nexport default Request;\n"]}
