@@ -34,8 +34,9 @@
     "vue": "^2.5.17"
   },
   "dependencies": {
-    "yoastseo": "^1.91.0",
-    "debounce": "^1.2.1"
+    "debounce": "^1.2.1",
+    "vue-yoast": "^1.0.1",
+    "yoastseo": "^1.91.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.0",

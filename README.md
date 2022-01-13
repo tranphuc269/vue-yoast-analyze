@@ -1,18 +1,29 @@
 # VueYoast
 
-Content and SEO assessor tools for Vue.js (based on [YoastSEO.js](https://github.com/Yoast/YoastSEO.js))
+Content and SEO assessor tools for Vue.js in yoast seo 1.9
 
-[Demo](https://meyt.github.io/vue-yoast)
+## environment
+
+```
+nodejs 16
+yarn 1.22
+```
 
 ## Installation
 
 ```
-npm install vue-yoast
+yarn add vue-yoast
 ```
 
 ## Usage
 
-Watch `/demo` directory.
+cd folder demo
+
+## build
+yarn build
+## run
+yarn run -> option servo
+
 
 ## Components
 

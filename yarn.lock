@@ -9103,6 +9103,14 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
+vue-yoast@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue-yoast/-/vue-yoast-1.0.1.tgz#6f6e8ef55674d0c3afa95ff71c2cd107b14011bb"
+  integrity sha512-P/mDmZR/W48mVWyowicC8OcmiT1ta274/9Cskji+8rH5d6Qjs1uP097pdvh4SILWADm2KQ6flGkK27Zt3k33qg==
+  dependencies:
+    debounce "^1.2.1"
+    yoastseo "^1.91.0"
+
 vue@^2.6.10:
   version "2.6.14"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
