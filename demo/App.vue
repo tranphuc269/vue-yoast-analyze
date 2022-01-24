@@ -44,7 +44,7 @@
               @update:descriptionLengthPercent="(value) => descriptionLengthPercent = value" />
           </b-card>
 
-          <b-card header="Content Assessor" class="mb-2">
+          <b-card header="Content Assessor" class="mb-2" id="seo-assessor">
             <content-assessor
               :title="metaTitle"
               :titleWidth="titleWidth"
@@ -56,7 +56,7 @@
               :resultFilter="assessorResultFilter" />
           </b-card>
 
-          <b-card header="SEO Assessor" class="mb-2">
+          <!-- <b-card header="SEO Assessor" class="mb-2">
               <seo-assessor
                   :keyword="focusKeyword"
                   :title="metaTitle"
@@ -67,20 +67,27 @@
                   :locale="locale"
                   :translations="translations"
                   :resultFilter="assessorResultFilter" />
-          </b-card>
+          </b-card> -->
 
-          <b-card header="SEO Assessor" class="mb-2" no-body>
-            <b-tabs card>
+          <b-card header="SEO Assessor">
+            <div v-for="(keyword, index) in focusKeywords.split(',').map(String)" :key="index" class="mb-2">
+              <seo-assessor
+                  :keyword="keyword"
+                  :title="metaTitle"
+                  :titleWidth="titleWidth"
+                  :description="metaDescription"
+                  :url="url"
+                  :text="description"
+                  :locale="locale"
+                  :translations="translations"
+                  :resultFilter="assessorResultFilter" />
+            </div>
+            <!-- <b-tabs card>
               <b-tab
-                v-for="(focusKeyword, index) in focusKeywords.split(' ').map(String)"
+                v-for="(focusKeyword, index) in focusKeywords.split(',').map(String)"
                 :key="index"
-                :title="'FocusKeyword ' + (index + 1)"
               >
-                <h1>ababab</h1>
-                <b-form-group label="Focus Keyword">
-                  <b-form-textarea v-model="focusKeywords.split(' ').map(String)[index]" />
-                </b-form-group>
-
+                <h1>focusKeyword</h1>
                 <seo-assessor
                   :keyword="focusKeyword"
                   :title="metaTitle"
@@ -92,7 +99,7 @@
                   :translations="translations"
                   :resultFilter="assessorResultFilter" />
               </b-tab>
-            </b-tabs>
+            </b-tabs> -->
           </b-card>
 
         </b-col>
@@ -156,8 +163,11 @@ export default {
 #app {
   background-color: #eee;
 }
-h1{
+#seo-assessor{
   padding: 10px;
+}
+h1{
+  margin: 10px;
   font-size: 2em;
 }
 .is-rtl .vue-yoast{

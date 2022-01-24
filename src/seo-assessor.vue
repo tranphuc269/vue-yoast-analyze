@@ -1,5 +1,8 @@
 <template>
-  <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor">
+  <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor" v-if="this.overallSeoScore > 0">
+    <h2>Keyword : {{keyword}}</h2>
+    <div>{{overallSeoRating}}</div>
+    <div>{{overallSeoScore/10}}</div>
     <div v-for="(item, index) in items" :key="index" :class="item._class" >
       <slot name="item" v-bind:item="item">
         <span class="vue-yoast-assessor-badge">&nbsp;</span>
@@ -152,6 +155,8 @@ export default {
       })
     },
     refresh () {
+      this.keyword = this.keyword.replace(/^\s+|\s+$/gm, '')
+      console.log(this.keyword.split(' ').map(String))
       this.refreshPaper()
       this.seoAssessor = new SeoAssessor(this.i18n, { marker: this.marker })
       this.seoAssessor.assess(this.paper)
