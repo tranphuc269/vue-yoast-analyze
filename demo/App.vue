@@ -44,7 +44,7 @@
               @update:descriptionLengthPercent="(value) => descriptionLengthPercent = value" />
           </b-card>
 
-          <b-card header="Content Assessor" class="mb-2" id="seo-assessor">
+          <b-card header="Đánh giá nội dung" class="mb-2" id="seo-assessor">
             <content-assessor
               :title="metaTitle"
               :titleWidth="titleWidth"
@@ -69,7 +69,7 @@
                   :resultFilter="assessorResultFilter" />
           </b-card> -->
 
-          <b-card header="SEO Assessor">
+          <b-card header="Đánh giá từ khoá">
             <div v-for="(keyword, index) in focusKeywords.split(',').map(String)" :key="index" class="mb-2">
               <seo-assessor
                   :keyword="keyword"

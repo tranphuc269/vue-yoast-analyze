@@ -1,5 +1,6 @@
 <template>
   <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor">
+    <div>Điểm số (trên 10) : {{overallScore/10}}</div>
     <div v-for="(item, index) in items" :key="index" :class="item._class" >
       <slot name="item" v-bind:item="item">
         <span class="vue-yoast-assessor-badge">&nbsp;</span>
@@ -148,6 +149,7 @@ export default {
       })
     },
     refresh () {
+      console.log(this.description)
       this.refreshPaper()
       this.contentAssessor = new ContentAssessor(this.i18n, { marker: this.marker })
       this.contentAssessor.assess(this.paper)
@@ -161,6 +163,8 @@ export default {
           socre: item.score,
           text: item.text
         })
+        console.log(result.socre)
+        console.log(item.score)
         this.assessorResults.push(result)
         if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
           this.assessorResultsByRating[result.rating].push(result)

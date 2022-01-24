@@ -4,8 +4,8 @@
     "js-text-analysis": {
       "": {
         "domain": "js-text-analysis",
-        "plural_forms": "nplurals=1; plural=0;",
-        "lang": "fa"
+        "plural_forms": "nplurals=2; plural=1;",
+        "lang": "en"
       },
       "Blocks for Schema output": [
         ""
