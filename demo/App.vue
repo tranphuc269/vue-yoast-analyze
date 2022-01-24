@@ -4,7 +4,7 @@
       <b-row>
         <b-col sm="12">
           <h1>
-            <a href="https://github.com/meyt/vue-yoast">Đánh giá bài viết chuẩn SEO</a> dùng yoast seo 1.90
+            <a href="https://github.com/meyt/vue-yoast">Analyze content </a>yoast seo 1.90
           </h1>
         </b-col>
         <b-col >
@@ -56,6 +56,19 @@
               :resultFilter="assessorResultFilter" />
           </b-card>
 
+          <b-card header="SEO Assessor" class="mb-2">
+              <seo-assessor
+                  :keyword="focusKeyword"
+                  :title="metaTitle"
+                  :titleWidth="titleWidth"
+                  :description="metaDescription"
+                  :url="url"
+                  :text="description"
+                  :locale="locale"
+                  :translations="translations"
+                  :resultFilter="assessorResultFilter" />
+          </b-card>
+
           <b-card header="SEO Assessor" class="mb-2" no-body>
             <b-tabs card>
               <b-tab
@@ -63,6 +76,7 @@
                 :key="index"
                 :title="'FocusKeyword ' + (index + 1)"
               >
+                <h1>ababab</h1>
                 <b-form-group label="Focus Keyword">
                   <b-form-textarea v-model="focusKeywords.split(' ').map(String)[index]" />
                 </b-form-group>

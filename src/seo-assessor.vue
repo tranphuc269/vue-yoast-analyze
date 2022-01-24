@@ -157,6 +157,8 @@ export default {
       this.seoAssessor.assess(this.paper)
       this.overallSeoScore = this.seoAssessor.calculateOverallScore()
       this.overallSeoRating = scoreToRating(this.seoAssessor.calculateOverallScore() / 10)
+      console.log(this.seoAssessor.calculateOverallScore() / 10)
+      console.log(this.overallSeoRating)
       this.assessorResults = []
       this.assessorResultsByRating = {}
       this.seoAssessor.results.forEach(item => {
