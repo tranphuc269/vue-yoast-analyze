@@ -1,6 +1,6 @@
 <template>
   <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor">
-    <div>Điểm số (trên 10) : {{overallScore/10}}</div>
+    <!-- <div>Điểm số (trên 10) : {{overallScore/10}}</div> -->
     <div v-for="(item, index) in items" :key="index" :class="item._class" >
       <slot name="item" v-bind:item="item">
         <span class="vue-yoast-assessor-badge">&nbsp;</span>
@@ -27,7 +27,7 @@ export default {
     },
     titleWidth: {
       type: Number,
-      default: 0
+      default: 160
     },
     description: {
       type: String,
@@ -84,6 +84,7 @@ export default {
   computed: {
     items () {
       const res = []
+      console.log('ratings : ' + ratings)
       ratings.forEach((rating) => {
         const items = this.assessorResultsByRating[rating]
         if (typeof items === 'undefined') return
@@ -138,21 +139,26 @@ export default {
   methods: {
     refreshPaper () {
       const text = removeHtmlBlocks(this.text)
+      console.log('text : ' + text)
+      console.log('keyword : ' + this.keyword)
+      console.log('description : ' + this.description)
+      console.log('url : ' + this.url)
+      console.log('title : ' + this.title)
+      console.log('titleWidth : ' + this.titleWidth)
       this.paper = new Paper(text, {
         keyword: this.keyword,
         description: this.description,
         url: this.url,
         title: this.title,
-        titleWidth: this.titleWidth,
         locale: this.locale,
         permalink: this.permalink
       })
     },
     refresh () {
-      console.log(this.description)
       this.refreshPaper()
       this.contentAssessor = new ContentAssessor(this.i18n, { marker: this.marker })
       this.contentAssessor.assess(this.paper)
+      console.log('contentAssessor : ' + this.contentAssessor)
       this.overallScore = this.contentAssessor.calculateOverallScore()
       this.overallRating = scoreToRating(this.contentAssessor.calculateOverallScore() / 10)
       this.assessorResults = []
@@ -163,8 +169,6 @@ export default {
           socre: item.score,
           text: item.text
         })
-        console.log(result.socre)
-        console.log(item.score)
         this.assessorResults.push(result)
         if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
           this.assessorResultsByRating[result.rating].push(result)

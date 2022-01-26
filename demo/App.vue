@@ -125,7 +125,7 @@ export default {
       metaDescription: '',
       url: '',
       description: '',
-      titleWidth: 0,
+      titleWidth: 160,
       titleLengthPercent: 0,
       descriptionLengthPercent: 0,
       translations: null,
