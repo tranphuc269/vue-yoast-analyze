@@ -4,7 +4,7 @@
       <b-row>
         <b-col sm="12">
           <h1>
-            <a href="https://github.com/meyt/vue-yoast">Analyze content </a>yoast seo 1.90
+            <a>Phân tích yoastseo</a>
           </h1>
         </b-col>
         <b-col >
@@ -26,7 +26,7 @@
             </b-form-group>
 
             <b-form-group label="Mô tả chi tiết sản phẩm">
-              <b-form-textarea v-model="description" />
+              <VueEditor v-model="description" />
             </b-form-group>
 
             <b-form-group label="Locale">
@@ -110,13 +110,15 @@
 
 <script>
 import { SnippetPreview, ContentAssessor, SeoAssessor } from '../src'
+import { VueEditor } from 'vue2-editor'
 import YoastSeoFaIr from './languages/fa_IR.json'
 export default {
   name: 'App',
   components: {
     ContentAssessor,
     SeoAssessor,
-    SnippetPreview
+    SnippetPreview,
+    VueEditor
   },
   data () {
     return {

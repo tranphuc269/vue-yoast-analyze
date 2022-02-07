@@ -1,6 +1,5 @@
 <template>
   <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor">
-    <!-- <div>Điểm số (trên 10) : {{overallScore/10}}</div> -->
     <div v-for="(item, index) in items" :key="index" :class="item._class" >
       <slot name="item" v-bind:item="item">
         <span class="vue-yoast-assessor-badge">&nbsp;</span>
@@ -14,11 +13,9 @@
 import debounce from 'debounce'
 import { Paper, ContentAssessor, interpreters, string } from 'yoastseo'
 import { getAssessorRatings, getI18n } from './utils.js'
-
 const removeHtmlBlocks = string.removeHtmlBlocks
 const scoreToRating = interpreters.scoreToRating
 const ratings = getAssessorRatings()
-
 export default {
   props: {
     title: {
@@ -27,7 +24,7 @@ export default {
     },
     titleWidth: {
       type: Number,
-      default: 160
+      default: 0
     },
     description: {
       type: String,
@@ -84,7 +81,6 @@ export default {
   computed: {
     items () {
       const res = []
-      console.log('ratings : ' + ratings)
       ratings.forEach((rating) => {
         const items = this.assessorResultsByRating[rating]
         if (typeof items === 'undefined') return
@@ -139,17 +135,12 @@ export default {
   methods: {
     refreshPaper () {
       const text = removeHtmlBlocks(this.text)
-      console.log('text : ' + text)
-      console.log('keyword : ' + this.keyword)
-      console.log('description : ' + this.description)
-      console.log('url : ' + this.url)
-      console.log('title : ' + this.title)
-      console.log('titleWidth : ' + this.titleWidth)
       this.paper = new Paper(text, {
         keyword: this.keyword,
         description: this.description,
         url: this.url,
         title: this.title,
+        titleWidth: this.titleWidth,
         locale: this.locale,
         permalink: this.permalink
       })
@@ -158,7 +149,6 @@ export default {
       this.refreshPaper()
       this.contentAssessor = new ContentAssessor(this.i18n, { marker: this.marker })
       this.contentAssessor.assess(this.paper)
-      console.log('contentAssessor : ' + this.contentAssessor)
       this.overallScore = this.contentAssessor.calculateOverallScore()
       this.overallRating = scoreToRating(this.contentAssessor.calculateOverallScore() / 10)
       this.assessorResults = []
@@ -169,6 +159,9 @@ export default {
           socre: item.score,
           text: item.text
         })
+        console.log('result : ' + result.rating)
+        console.log('result : ' + result.socre)
+        console.log('result : ' + result.text)
         this.assessorResults.push(result)
         if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
           this.assessorResultsByRating[result.rating].push(result)
@@ -188,4 +181,5 @@ export default {
 </script>
 
 <style>
+
 </style>

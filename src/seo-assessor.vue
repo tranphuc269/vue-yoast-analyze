@@ -160,7 +160,6 @@ export default {
       this.seoAssessor = new SeoAssessor(this.i18n, { marker: this.marker })
       this.seoAssessor.assess(this.paper)
       this.overallSeoScore = this.seoAssessor.calculateOverallScore()
-      console.log('seoAssessor : ' + this.seoAssessor)
       this.overallSeoRating = scoreToRating(this.seoAssessor.calculateOverallScore() / 10)
       this.assessorResults = []
       this.assessorResultsByRating = {}

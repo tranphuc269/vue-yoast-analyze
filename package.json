@@ -36,6 +36,7 @@
   "dependencies": {
     "debounce": "^1.2.1",
     "vue-yoast": "^1.0.1",
+    "vue2-editor": "^2.10.3",
     "yoastseo": "^1.91.0"
   },
   "devDependencies": {
