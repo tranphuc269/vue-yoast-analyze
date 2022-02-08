@@ -4,9 +4,11 @@ import Vue from 'vue/dist/vue.js'
 import App from './App'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
+import CKEditor from 'ckeditor4-vue'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
+Vue.use(CKEditor)
 Vue.config.productionTip = true
 
 new Vue({

@@ -26,7 +26,7 @@
             </b-form-group>
 
             <b-form-group label="Mô tả chi tiết sản phẩm">
-              <VueEditor v-model="description" />
+              <ckeditor :editor="editor" v-model="description" />
             </b-form-group>
 
             <b-form-group label="Locale">
@@ -110,7 +110,7 @@
 
 <script>
 import { SnippetPreview, ContentAssessor, SeoAssessor } from '../src'
-import { VueEditor } from 'vue2-editor'
+import { CKEditor, ClassicEditor } from 'ckeditor4-vue'
 import YoastSeoFaIr from './languages/fa_IR.json'
 export default {
   name: 'App',
@@ -118,10 +118,11 @@ export default {
     ContentAssessor,
     SeoAssessor,
     SnippetPreview,
-    VueEditor
+    CKEditor
   },
   data () {
     return {
+      editor: ClassicEditor,
       focusKeywords: '',
       metaTitle: '',
       metaDescription: '',
