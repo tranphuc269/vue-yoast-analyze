@@ -38,6 +38,10 @@ const store = new Vuex.Store({
       } else {
         state.responseData.push(res)
       }
+    },
+    resetRes (state) {
+      console.log('Resset trang thai')
+      state.responseData = []
     }
   }
 })

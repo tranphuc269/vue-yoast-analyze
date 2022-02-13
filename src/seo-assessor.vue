@@ -185,7 +185,7 @@ export default {
       })
       this.responseData = this.keyword + '/' + (this.seoAssessor.calculateOverallScore() / 10)
       this.addToResponse(this.responseData)
-      setTimeout(this.getRes, 2000)
+      setTimeout(this.getRes, 3000)
       this.$emit('update:results', this.assessorResults)
       this.$emit('update:resultsByRating', this.assessorResultsByRating)
     }

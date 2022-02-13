@@ -114,6 +114,7 @@
 import { SnippetPreview, ContentAssessor, SeoAssessor } from '../src'
 import { CKEditor, ClassicEditor } from 'ckeditor4-vue'
 import YoastSeoViVn from './languages/vi_VN.json'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'App',
@@ -158,15 +159,16 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['resetRes']),
     assessorResultFilter (value) {
       return value
     },
     receiveMessage (event) {
+      this.resetRes()
       this.metaTitle = event.data.MetaTitle
       this.focusKeywords = event.data.MetaKeywords
       this.description = event.data.FullDescription
       this.metaDescription = event.data.MetaDescription
-      console.log('this.metaTitle ' + event.data.MetaDescription)
     }
   },
   mounted () {
