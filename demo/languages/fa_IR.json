@@ -1226,7 +1226,7 @@
         "%1$s ویژگی متن جایگزین تصویر %3$s: تصاویر موجود در این صفحه دارای متن جایگزین تصویر هستند ، اما شما کلیدواژه را در انتخاب نکرده اید . %2$sمشکل را حل کنید %3$s!"
       ],
       "%1$sKeyphrase in subheading%2$s: %3$s of your H2 and H3 subheadings reflects the topic of your copy. Good job!": [
-        "%1$s کلید واژه در زیرنویس%2$s:  %3$s از زیرعنوان های H2 و H3 شما موضوع نسخه شما را منعکس می کند. آفرین!"
+        "%1$s کلید واژه در زیرنویس%2$s:  %3$s از زیرعنوان های H2 و H3 شما موضوع نسخه شما را منعکس می کند. آفرین! 11111"
       ],
       "%1$sKeyphrase in subheading%2$s: Your H2 or H3 subheading reflects the topic of your copy. Good job!": [
         "%1$s کلید واژه در زیرنویس%2$s:  از زیرعنوان های H2 و H3 شما موضوع نسخه شما را منعکس می کند. آفرین!"
@@ -1487,7 +1487,7 @@
         "%1$sانتقال کلمات%2$s: آفرین!"
       ],
       "%1$sTransition words%2$s: Only %3$s of the sentences contain transition words, which is not enough. %4$sUse more of them%2$s.": [
-        "%1$sکلمات گذار %2$s: تنها %3$s جمله حاوی کلمات گذار است که کافی نیست. %4$sاز این نوع جمله بیشتر استفاده کنید%2$s."
+        "%1$sکلمات گذار %2$s: تنها %3$s جمله حاوی کلمات گذار است که کافی نیست. %4$sاز این نوع جمله بیشتر استفاده کنید%2$s. 11111111"
       ],
       "%1$sTransition words%2$s: None of the sentences contain transition words. %3$sUse some%2$s.": [
         "%1$sکلمات گذار %2$s: هیچ یک از جملات حاوی کلمات گذار نیست . %3$sچند مورد را اضافه کنید %2$s."

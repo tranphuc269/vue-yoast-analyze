@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{'is-rtl': locale === 'fa_IR' }">
+  <div id="app" :class="{'is-rtl': locale === 'vi_VN' }">
     <b-container>
       <b-row>
         <b-col sm="12">
@@ -8,7 +8,7 @@
           </h1>
         </b-col>
         <b-col >
-          <b-card class="mb-2">
+          <!-- <b-card class="mb-2">
             <b-form-group label="Tiêu đề">
               <b-form-input v-model="metaTitle" />
             </b-form-group>
@@ -42,8 +42,10 @@
               @update:titleWidth="(value) => titleWidth = value"
               @update:titleLengthPercent="(value) => titleLengthPercent = value"
               @update:descriptionLengthPercent="(value) => descriptionLengthPercent = value" />
-          </b-card>
-
+          </b-card> -->
+          <b-form-group label="Locale">
+              <b-form-select v-model="locale" :options="localeOptions" class="mb-3" size="sm" />
+            </b-form-group>
           <b-card header="Đánh giá nội dung" class="mb-2" id="seo-assessor">
             <content-assessor
               :title="metaTitle"
@@ -111,7 +113,8 @@
 <script>
 import { SnippetPreview, ContentAssessor, SeoAssessor } from '../src'
 import { CKEditor, ClassicEditor } from 'ckeditor4-vue'
-import YoastSeoFaIr from './languages/fa_IR.json'
+import YoastSeoViVn from './languages/vi_VN.json'
+
 export default {
   name: 'App',
   components: {
@@ -139,16 +142,16 @@ export default {
           value: 'en_US'
         },
         {
-          text: 'fa_IR',
-          value: 'fa_IR'
+          text: 'vi_VN',
+          value: 'vi_VN'
         }
       ]
     }
   },
   watch: {
     locale (newVal) {
-      if (newVal === 'fa_IR') {
-        this.translations = YoastSeoFaIr
+      if (newVal === 'vi_VN') {
+        this.translations = YoastSeoViVn
       } else {
         this.translations = null
       }
@@ -157,7 +160,20 @@ export default {
   methods: {
     assessorResultFilter (value) {
       return value
+    },
+    receiveMessage (event) {
+      this.metaTitle = event.data.MetaTitle
+      this.focusKeywords = event.data.MetaKeywords
+      this.description = event.data.FullDescription
+      this.metaDescription = event.data.MetaDescription
+      console.log('this.metaTitle ' + event.data.MetaDescription)
     }
+  },
+  mounted () {
+    window.addEventListener('message', this.receiveMessage)
+  },
+  beforeDestroy () {
+    window.removeEventListener('message', this.receiveMessage)
   }
 }
 </script>
@@ -172,9 +188,5 @@ export default {
 h1{
   margin: 10px;
   font-size: 2em;
-}
-.is-rtl .vue-yoast{
-  direction: rtl;
-  text-align: right;
 }
 </style>

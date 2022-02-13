@@ -16,6 +16,7 @@
 import debounce from 'debounce'
 import { SeoAssessor, Paper, interpreters, string } from 'yoastseo'
 import { getAssessorRatings, getI18n } from './utils.js'
+import { mapGetters, mapMutations } from 'vuex'
 
 const removeHtmlBlocks = string.removeHtmlBlocks
 const scoreToRating = interpreters.scoreToRating
@@ -78,6 +79,7 @@ export default {
     return {
       assessorResults: [],
       assessorResultsByRating: {},
+      responseData: null,
       overallSeoScore: null,
       overallSeoRating: null,
       seoAssessor: null
@@ -142,6 +144,11 @@ export default {
     this.refresh()
   },
   methods: {
+    ...mapMutations(['addResponse']),
+    ...mapGetters(['getRes']),
+    addToResponse () {
+      this.addResponse(this.responseData)
+    },
     refreshPaper () {
       const text = removeHtmlBlocks(this.text)
       this.paper = new Paper(text, {
@@ -176,6 +183,9 @@ export default {
           this.assessorResultsByRating[result.rating] = [result]
         }
       })
+      this.responseData = this.keyword + '/' + (this.seoAssessor.calculateOverallScore() / 10)
+      this.addToResponse(this.responseData)
+      setTimeout(this.getRes, 2000)
       this.$emit('update:results', this.assessorResults)
       this.$emit('update:resultsByRating', this.assessorResultsByRating)
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor">
+  <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor" style="direction: ltr; text-align: left;">
     <div v-for="(item, index) in items" :key="index" :class="item._class" >
       <slot name="item" v-bind:item="item">
         <span class="vue-yoast-assessor-badge">&nbsp;</span>
@@ -159,9 +159,6 @@ export default {
           socre: item.score,
           text: item.text
         })
-        console.log('result : ' + result.rating)
-        console.log('result : ' + result.socre)
-        console.log('result : ' + result.text)
         this.assessorResults.push(result)
         if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
           this.assessorResultsByRating[result.rating].push(result)
@@ -181,5 +178,12 @@ export default {
 </script>
 
 <style>
-
+.vue-yoast {
+    direction: ltr;
+    text-align: left;
+}
+.vue-yoast vue-yoast-assessor vue-yoast-content-assessor >>> p {
+  direction: ltr;
+    text-align: left;
+}
 </style>
