@@ -43,9 +43,9 @@
               @update:titleLengthPercent="(value) => titleLengthPercent = value"
               @update:descriptionLengthPercent="(value) => descriptionLengthPercent = value" />
           </b-card> -->
-          <b-form-group label="Locale">
+          <!-- <b-form-group label="Locale">
               <b-form-select v-model="locale" :options="localeOptions" class="mb-3" size="sm" />
-            </b-form-group>
+            </b-form-group> -->
           <b-card header="Đánh giá nội dung" class="mb-2" id="seo-assessor">
             <content-assessor
               :title="metaTitle"
@@ -135,7 +135,7 @@ export default {
       titleWidth: 160,
       titleLengthPercent: 0,
       descriptionLengthPercent: 0,
-      translations: null,
+      translations: YoastSeoViVn,
       locale: 'en_US',
       localeOptions: [
         {
