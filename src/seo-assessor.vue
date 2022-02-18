@@ -30,7 +30,7 @@ export default {
     },
     titleWidth: {
       type: Number,
-      default: 320
+      default: 100
     },
     description: {
       type: String,
@@ -162,7 +162,6 @@ export default {
       })
     },
     refresh () {
-      this.keyword = this.keyword.replace(/^\s+|\s+$/gm, '')
       this.refreshPaper()
       this.seoAssessor = new SeoAssessor(this.i18n, { marker: this.marker })
       this.seoAssessor.assess(this.paper)
@@ -171,16 +170,39 @@ export default {
       this.assessorResults = []
       this.assessorResultsByRating = {}
       this.seoAssessor.results.forEach(item => {
-        const result = this.resultFilter({
-          rating: scoreToRating(item.score),
-          socre: item.score,
-          text: item.text
-        })
-        this.assessorResults.push(result)
-        if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
-          this.assessorResultsByRating[result.rating].push(result)
+        if (!item.text.includes('Tiêu đề SEO quá ngắn')) {
+          const result = this.resultFilter({
+            rating: scoreToRating(item.score),
+            socre: item.score,
+            text: item.text
+          })
+          this.assessorResults.push(result)
+          if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
+            this.assessorResultsByRating[result.rating].push(result)
+          } else {
+            this.assessorResultsByRating[result.rating] = [result]
+          }
         } else {
-          this.assessorResultsByRating[result.rating] = [result]
+          let text = ''
+          let score = 0
+          if (this.title.length >= 50 && this.title.length <= 70) {
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Tiêu đề SEO khoảng 50 đến 70 từ, rất tốt.'
+            score = 9
+          } else {
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Độ rộng tiêu đề SEO quá dài : ' + this.title.length + ' kí tự, những từ phía sau sẽ không hiển thị được, sẽ xuất hiện dấu ba chấm (…) ở phía sau'
+            score = 6
+          }
+          const result = this.resultFilter({
+            rating: scoreToRating(score),
+            socre: score,
+            text: text
+          })
+          this.assessorResults.push(result)
+          if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
+            this.assessorResultsByRating[result.rating].push(result)
+          } else {
+            this.assessorResultsByRating[result.rating] = [result]
+          }
         }
       })
       this.responseData = this.keyword + '/' + (this.seoAssessor.calculateOverallScore() / 10)
