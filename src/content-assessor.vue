@@ -1,5 +1,6 @@
 <template>
   <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor" style="direction: ltr; text-align: left;">
+    <h2>Đánh giá nội dung</h2>
     <div v-for="(item, index) in items" :key="index" :class="item._class" >
       <slot name="item" v-bind:item="item">
         <span class="vue-yoast-assessor-badge">&nbsp;</span>

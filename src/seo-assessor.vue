@@ -1,6 +1,6 @@
 <template>
   <div class="vue-yoast vue-yoast-assessor vue-yoast-content-assessor" v-if="this.overallSeoScore > 0">
-    <h2>Keyword : {{keyword}}</h2>
+    <h2>Từ khoá : {{keyword}}</h2>
     <!-- <div>{{overallSeoRating}}</div> -->
     <div>Điểm số (trên 10) : {{overallSeoScore/10}}</div>
     <div v-for="(item, index) in items" :key="index" :class="item._class" >
@@ -185,7 +185,8 @@ export default {
       })
       this.responseData = this.keyword + '/' + (this.seoAssessor.calculateOverallScore() / 10)
       this.addToResponse(this.responseData)
-      setTimeout(this.getRes, 3000)
+      // this.getRes()
+      setTimeout(this.getRes, 2000)
       this.$emit('update:results', this.assessorResults)
       this.$emit('update:resultsByRating', this.assessorResultsByRating)
     }
