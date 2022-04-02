@@ -188,9 +188,15 @@ export default {
           if (this.title.length >= 50 && this.title.length <= 70) {
             text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Tiêu đề SEO khoảng 50 đến 70 từ, rất tốt.'
             score = 9
-          } else {
+          } else if(this.title.length > 70){
             text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Độ rộng tiêu đề SEO quá dài : ' + this.title.length + ' kí tự, những từ phía sau sẽ không hiển thị được, sẽ xuất hiện dấu ba chấm (…) ở phía sau'
             score = 6
+          }else if(this.title.length < 50 && this.title.length != 0){
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Độ rộng tiêu đề SEO quá ngắn, không đủ 50 kí tự'
+            score = 3
+          }else{
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Không được để trống tiêu đều SEO'
+            score = 0
           }
           const result = this.resultFilter({
             rating: scoreToRating(score),
