@@ -151,6 +151,7 @@ export default {
     },
     refreshPaper () {
       const text = removeHtmlBlocks(this.text)
+      console.log('url ' + this.url)
       this.paper = new Paper(text, {
         keyword: this.keyword,
         description: this.description,
@@ -158,7 +159,8 @@ export default {
         title: this.title,
         titleWidth: this.titleWidth,
         locale: this.locale,
-        permalink: this.permalink
+        permalink: this.permalink,
+        link: 'https://beautyfulls.com'
       })
     },
     refresh () {
@@ -170,11 +172,26 @@ export default {
       this.assessorResults = []
       this.assessorResultsByRating = {}
       this.seoAssessor.results.forEach(item => {
-        if (!item.text.includes('Tiêu đề SEO quá ngắn')) {
+        if (item.text.includes('Tiêu đề SEO quá ngắn')) {
+          let text = ''
+          let score = 0
+          if (this.title.length >= 50 && this.title.length <= 70) {
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Tiêu đề SEO khoảng 50 đến 70 từ, rất tốt.'
+            score = 9
+          } else if (this.title.length > 70) {
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Độ rộng tiêu đề SEO quá dài : ' + this.title.length + ' kí tự, những từ phía sau sẽ không hiển thị được, sẽ xuất hiện dấu ba chấm (…) ở phía sau'
+            score = 6
+          } else if (this.title.length < 50 && this.title.length !== 0) {
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Độ rộng tiêu đề SEO quá ngắn, không đủ 50 kí tự'
+            score = 3
+          } else {
+            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Không được để trống tiêu đều SEO'
+            score = 0
+          }
           const result = this.resultFilter({
-            rating: scoreToRating(item.score),
-            socre: item.score,
-            text: item.text
+            rating: scoreToRating(score),
+            socre: score,
+            text: text
           })
           this.assessorResults.push(result)
           if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
@@ -183,25 +200,10 @@ export default {
             this.assessorResultsByRating[result.rating] = [result]
           }
         } else {
-          let text = ''
-          let score = 0
-          if (this.title.length >= 50 && this.title.length <= 70) {
-            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Tiêu đề SEO khoảng 50 đến 70 từ, rất tốt.'
-            score = 9
-          } else if(this.title.length > 70){
-            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Độ rộng tiêu đề SEO quá dài : ' + this.title.length + ' kí tự, những từ phía sau sẽ không hiển thị được, sẽ xuất hiện dấu ba chấm (…) ở phía sau'
-            score = 6
-          }else if(this.title.length < 50 && this.title.length != 0){
-            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Độ rộng tiêu đề SEO quá ngắn, không đủ 50 kí tự'
-            score = 3
-          }else{
-            text = '<a href="https://yoa.st/34h" target="_blank">Độ rộng tiêu đề SEO</a>: Không được để trống tiêu đều SEO'
-            score = 0
-          }
           const result = this.resultFilter({
-            rating: scoreToRating(score),
-            socre: score,
-            text: text
+            rating: scoreToRating(item.score),
+            socre: item.score,
+            text: item.text
           })
           this.assessorResults.push(result)
           if (this.assessorResultsByRating.hasOwnProperty(result.rating)) {
