@@ -151,7 +151,7 @@ export default {
     },
     refreshPaper () {
       const text = removeHtmlBlocks(this.text)
-      console.log('url ' + this.url)
+      console.log('this.titleWidth : ' + this.titleWidth)
       this.paper = new Paper(text, {
         keyword: this.keyword,
         description: this.description,
